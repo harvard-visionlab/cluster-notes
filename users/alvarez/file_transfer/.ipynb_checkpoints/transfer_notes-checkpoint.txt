@@ -1,0 +1,54 @@
+
+# move the files from your holylabs folder => /n/alvarez_lab_tier1
+
+rsync -a --info=progress2 --remove-source-files /n/holystore01/LABS/alvarez_lab/Everyone/conda/ /n/alvarez_lab_tier1/Users/alvarez/conda_envs
+
+rsync -a --info=progress2 --remove-source-files /n/holylabs/LABS/alvarez_lab/Users/alvarez/conda_envs /n/alvarez_lab_tier1/Users/alvarez/conda_envs
+
+rsync -a --info=progress2 --remove-source-files /n/holylabs/LABS/alvarez_lab/Users/alvarez/conda /n/alvarez_lab_tier1/Users/alvarez/conda
+
+rsync -a --info=progress2 --remove-source-files /n/holylabs/LABS/alvarez_lab/Users/alvarez/libraries  /n/alvarez_lab_tier1/Users/alvarez/libraries
+
+rsync -a --info=progress2 --remove-source-files mv /n/holylabs/LABS/alvarez_lab/Users/alvarez/venvs  /n/alvarez_lab_tier1/Users/alvarez/venvs
+
+# fix error
+rsync -a --info=progress2 --remove-source-files /n/alvarez_lab_tier1/Users/alvarez/conda/ffcv-ssl/ /n/alvarez_lab_tier1/Users/alvarez/conda/conda/ffcv-ssl/
+
+rsync -a --info=progress2 --remove-source-files /n/alvarez_lab_tier1/Users/alvarez/conda_envs/lrm/ /n/alvarez_lab_tier1/Users/alvarez/conda_envs/conda_envs/lrm/
+
+
+
+# modify your symbolic links
+default_conda_envs_dir=$(conda config --show envs_dirs | grep "$USER" | awk '{print $2}')
+cd $default_conda_envs_dir
+ls -la
+
+rm /n/home02/alvarez/.conda/envs/workshop
+ln -s /n/alvarez_lab_tier1/Users/alvarez/conda_envs/workshop /n/home02/alvarez/.conda/envs/workshop
+
+rm /n/home02/alvarez/.conda/envs/brain-score
+ln -s /n/alvarez_lab_tier1/Users/alvarez/conda_envs/brain-score /n/home02/alvarez/.conda/envs/brain-score
+
+rm /n/home02/alvarez/.conda/envs/composer_ffcv
+ln -s /n/alvarez_lab_tier1/Users/alvarez/conda_envs/composer_ffcv /n/home02/alvarez/.conda/envs/composer_ffcv
+
+rm /n/home02/alvarez/.conda/envs/composer_ffcv2
+ln -s /n/alvarez_lab_tier1/Users/alvarez/conda_envs/composer_ffcv2 /n/home02/alvarez/.conda/envs/composer_ffcv2
+
+rm /n/home02/alvarez/.conda/envs/ffcv-ssl
+ln -s /n/alvarez_lab_tier1/Users/alvarez/conda_envs/ffcv-ssl /n/home02/alvarez/.conda/envs/ffcv-ssl
+
+rm /n/home02/alvarez/.conda/envs/lrm
+ln -s /n/alvarez_lab_tier1/Users/alvarez/conda_envs/lrm /n/home02/alvarez/.conda/envs/lrm
+
+rm /n/home02/alvarez/.conda/envs/analysis
+ln -s /n/alvarez_lab_tier1/Users/alvarez/conda_envs/analysis /n/home02/alvarez/.conda/envs/analysis
+
+# update your .bashrc file
+
+export CONDA_ENV_DIR=/n/alvarez_lab_tier1/Users/alvarez/conda_envs
+
+
+
+
+default_conda_envs_dir=$(conda config --show envs_dirs | grep "$USER" | awk '{print $2}')

@@ -1,0 +1,26 @@
+
+# ~/.model-tools
+rsync -av --progress ~/.model-tools /n/alvarez_lab_tier1/Users/alvarez/
+rm -rf ~/.model-tools
+ln -s /n/alvarez_lab_tier1/Users/alvarez/.model-tools ~/.model-tools
+
+# ~/texlive
+rsync -av --progress ~/texlive /n/alvarez_lab_tier1/Users/alvarez/
+rm -rf ~/texlive
+ln -s /n/alvarez_lab_tier1/Users/alvarez/texlive ~/texlive
+
+# ~/.brainio
+rsync -av --progress ~/.brainio /n/alvarez_lab_tier1/Users/alvarez/
+rm -rf ~/.brainio
+ln -s /n/alvarez_lab_tier1/Users/alvarez/.brainio ~/.brainio
+
+# ~/.result_caching
+rsync -av --progress ~/.result_caching /n/alvarez_lab_tier1/Users/alvarez/
+rm -rf ~/.result_caching
+ln -s /n/alvarez_lab_tier1/Users/alvarez/.result_caching ~/.result_caching
+
+# ~/.lightning -> /n/netscratch/alvarez_lab/Lab/.lightning
+ln -s /n/netscratch/alvarez_lab/Lab/.lightning ~/.lightning
+
+# ~/.lightning -> /n/netscratch/alvarez_lab/Lab/.lightning
+ln -s /n/netscratch/alvarez_lab/Lab/.cache/huggingface ~/.cache/huggingface
