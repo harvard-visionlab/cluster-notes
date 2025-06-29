@@ -1,9 +1,11 @@
 #!/bin/bash
 #
 # Mount multiple S3 buckets in parallel
-# Usage: ./mount_multiple_buckets.sh
+# Usage: 
+#   ./mount_buckets.sh                                    # Use default buckets
+#   ./mount_buckets.sh bucket1 bucket2 bucket3            # Mount specific buckets
 # 
-# Edit the BUCKETS array below to add/remove buckets
+# Default buckets are used if no arguments provided
 #
 
 set -e
@@ -11,12 +13,18 @@ set -e
 # Configuration
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 MOUNT_SCRIPT="${MOUNT_SCRIPT_PATH:-$SCRIPT_DIR/mount_s3_bucket.sh}"
-BUCKETS=(
-    "teamspace-onboarding"
-    "visionlab-datasets" 
-    "visionlab-projects"
-    "visionlab-members"
-)
+
+# Check for arguments - if provided, use them; otherwise use defaults
+if [ $# -gt 0 ]; then
+    # Use command line arguments as bucket list
+    BUCKETS=("$@")    # <-- THIS is where "$@" becomes the BUCKETS array
+else
+    # Default buckets if no arguments provided
+    BUCKETS=(
+        "visionlab-datasets" 
+        "visionlab-members"
+    )
+fi
 
 # Colors for output
 RED='\033[0;31m'
